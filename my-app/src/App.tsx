@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
+import Navbar from './Components/Navbar';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataFailure, fetchDataRequest, fetchDataSuccess } from './redux/Slice';
+import axios from 'axios';
+
+
+
 
 function App() {
+
+ 
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector((state:any) => state.data);
+
+  useEffect(() => {
+    dispatch(fetchDataRequest());
+    axios.get('https://dummyjson.com/products')
+      .then(response => dispatch(fetchDataSuccess(response.data)))
+      .catch(error => dispatch(fetchDataFailure(error)));
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
