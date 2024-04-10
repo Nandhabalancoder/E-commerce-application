@@ -13,7 +13,7 @@ const SignUpForm: React.FC = () => {
   ) => {
     try {
       const response = await axios.post("http://localhost:3001/user", values);
-      console.log(response.data); // Response from the server
+      console.log(response.data); 
       setSubmitting(false);
       setFieldError("form", null);
     } catch (error: any) {
