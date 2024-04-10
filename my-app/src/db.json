@@ -1,0 +1,16 @@
+{
+  "user": [
+    {
+      "id": "0efc",
+      "username": "kminchelle",
+      "password": "ss",
+      "admin":false
+    },
+    {
+      "id": "59b9",
+      "username": "dd",
+      "password": "qwe",
+      "admin":false
+    }
+  ]
+}
