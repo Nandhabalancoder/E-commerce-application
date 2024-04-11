@@ -6,9 +6,13 @@ import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // Importing login icon
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getUserLogedIn } from "../redux/authSlice";
+import { Button } from "@mui/material";
 
 const Navbar: React.FC = () => {
   const pages = [{ name: "Home", link: "/" }];
+  const user=useSelector(getUserLogedIn)
 
   return (
     <AppBar position="static">
@@ -32,7 +36,15 @@ const Navbar: React.FC = () => {
             <IconButton color="inherit">
               <AccountCircleIcon />
             </IconButton>
+          </Link>{
+            user && user?.admin? <Link to={"/admin"} style={{ textDecoration: 'none', color: 'inherit' }}>
+<Button variant="contained" color="error">Admin</Button>
           </Link>
+
+            :""
+            
+          }
+         
           <IconButton color="inherit">
             <ShoppingCartIcon />
           </IconButton>

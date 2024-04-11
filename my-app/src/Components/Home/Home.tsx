@@ -6,7 +6,7 @@ function Home(){
     return(
         <div>
         <Topbanner/>
-        <ProductCard/>
+        <ProductCard page="home"/>
         </div>
     )
 }

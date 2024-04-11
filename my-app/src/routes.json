@@ -1,3 +1,4 @@
 {
-  "/auth": "/signup"
+  "/auth": "/signup",
+  "/products": "/products"
   }

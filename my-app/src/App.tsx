@@ -4,6 +4,7 @@ import Login from './Components/Login/Login';
 import Navbar from './Components/Navbar';
 import React from 'react';
 import SignUpForm from './Components/SignUp/SignUp';
+import Admin from './Components/Admin/Admin';
 
 
 
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/signup" element={<SignUpForm page="signup" />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </div>
