@@ -43,6 +43,71 @@ export const deleteProduct = createAsyncThunk(
     }
   }
 );
+
+interface Product {
+  id: any;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: any;
+}
+
+export const editProduct = createAsyncThunk(
+  'product/editProduct',
+  async (product: Product) => {
+    const { id, ...productData } = product;
+    const url = `http://localhost:3001/products/${id}`;
+    try {
+      const response = await axios.put(url, productData); 
+      if (response.status === 200) {
+        return response.data;
+      } else {
+        throw new Error(`Failed to edit product: ${response.statusText}`);
+      }
+    } catch (error: any) {
+      console.error("Error editing product:", error);
+      throw new Error("Failed to edit product. Please try again later.");
+    }
+  }
+);
+
+interface addProduct {
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: any;
+}
+export const addProduct = createAsyncThunk(
+  'product/addProduct',
+  async (product: addProduct) => {
+    const {...productData } = product;
+    const url = `http://localhost:3001/products`;
+    console.log(productData)
+    try {
+      const response = await axios.post(url, productData); 
+      if (response.status === 201) {
+        return response.data;
+      } else {
+        throw new Error(`Failed to Added product: ${response.statusText}`);
+      }
+    } catch (error: any) {
+      console.error("Error Add product:", error);
+      throw new Error("Failed to add product. Please try again later.");
+    }
+  }
+);
 interface StateProps {
   products: any[];
 }
@@ -92,6 +157,40 @@ const projectData = createSlice({
         state.error = action.error
           ? action.error.message || 'Failed to delete product'
           : 'Failed to delete product';
+      })
+      .addCase(editProduct.pending, (state:any) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(editProduct.fulfilled, (state:any, action) => {
+        state.status = 'succeeded';
+        // Update the product in the products array
+        state.products = state.products.map((product:any) => {
+          if (product.id === action.payload.id) {
+            return action.payload;
+          }
+          return product;
+        });
+        state.error = null;
+      })
+      .addCase(editProduct.rejected, (state:any, action) => {
+        state.status = 'failed';
+        state.error = action.error
+          ? action.error.message || 'Failed to edit product'
+          : 'Failed to edit product';
+      })
+      .addCase(addProduct.pending, (state:any) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(addProduct.fulfilled, (state:any, action) => {
+        state.status = 'succeeded';
+        state.products.push(action.payload);
+        state.error = null;
+      })
+      .addCase(addProduct.rejected, (state:any, action) => {
+        state.status = 'failed';
+        state.error = action.error.message || 'Failed to add product';
       });
   },
 });

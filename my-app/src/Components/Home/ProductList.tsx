@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteProduct,
+  editProduct,
   fetchProducts,
   getProductList,
 } from "../../redux/Slice";
@@ -21,11 +22,16 @@ import {
 import { getUserLogedIn } from "../../redux/authSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import EditProductPopup from "../ProductEdit/ProductEdit";
+
 interface ProductCardProps {
   page: "home" | "admin"; // Specify the possible values for the page prop
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
+  const [popUp, setPopUp] = useState(false);
+  const [addProductPopupOpen, setAddProductPopupOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null); // State to store the details of the clicked product
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +41,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
   const products = useSelector(getProductList);
   const user = useSelector(getUserLogedIn);
 
-
   const handleClick = () => {
     if (user === null) {
       alert("Login to continue");
@@ -43,21 +48,66 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
     } else {
     }
   };
+
   const handleDeleteProduct = async (productId: any) => {
     try {
       const response = await dispatch(deleteProduct(productId) as any);
       if (response?.meta?.requestStatus === "fulfilled") {
         alert("product deleted successfully");
-      }else{
-        alert("try again"); 
+      } else {
+        alert("try again");
       }
     } catch (error) {
       console.error("Error deleting product:", error);
     }
   };
+
+  const handleOpenEditPopup = (product: any) => {
+    setSelectedProduct(product); // Set the selected product
+    setPopUp(true);
+  };
+
+  const handleOpenAddPopup = () => {
+    setAddProductPopupOpen(true);
+  };
+
+  const handleCloseAddPopup = () => {
+    setAddProductPopupOpen(false);
+  };
+  const handleCloseEditPopup = () => {
+    setPopUp(false);
+  };
+
   return (
     <ProductCardWrapper>
-      <Grid container spacing={3}>
+         <Grid container justifyContent="flex-end">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleOpenAddPopup} // Fixed: Missing function invocation
+        >
+          Add product
+        </Button>
+      </Grid>
+
+      <EditProductPopup
+        open={addProductPopupOpen} 
+        handleClose={handleCloseAddPopup} 
+        productId={null}
+        title=""
+        description=""
+        price={0}
+        discountPercentage={0}
+        rating={0}
+        stock={0}
+        brand=""
+        category=""
+        thumbnail=""
+        images= {[]}
+        page="addproduct"
+      />
+
+      <Grid container spacing={3} paddingTop={3}>
         {products?.length ? (
           products.map((product: any, index: any) => (
             <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
@@ -71,13 +121,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
                 <CardMedia
                   component="img"
                   height="200"
-                  image={product.images[0]}
-                  alt={product.name}
+                  image={product.images?.[0] || ""}
+                  alt={product?.name}
                 />
                 <CardContent>
-                  <ProductTitle>{product.title}</ProductTitle>
+                  <ProductTitle>{product.title || ""}</ProductTitle>
                   <ProductDescription variant="body1">
-                    {product.description}
+                    {product?.description || ""}
                   </ProductDescription>
                   <Grid
                     container
@@ -85,15 +135,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
                     alignItems="center"
                   >
                     <ProductTitle variant="body2">
-                      Price: ${product.price}
+                      Price: ${product?.price}
                     </ProductTitle>
                     <ProductTitle variant="body2">
-                      count:{product.stock}
+                      count:{product?.stock || ""}
                     </ProductTitle>
                   </Grid>
                   {page === "admin" ? (
                     <>
-                      {" "}
                       <Grid item xs={12}>
                         <Button
                           variant="contained"
@@ -119,7 +168,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
                           variant="contained"
                           color="warning"
                           fullWidth
-                          onClick={handleClick}
+                          onClick={() => handleOpenEditPopup(product)} // Pass the clicked product to handleOpenEditPopup
                         >
                           Edit
                         </Button>
@@ -145,6 +194,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
           <CircularProgress />
         )}
       </Grid>
+
+      {/* Render the EditProductPopup only when a product is selected */}
+      {selectedProduct && (
+        <EditProductPopup
+          open={popUp}
+          handleClose={handleCloseEditPopup}
+          productId={selectedProduct?.id}
+          title={selectedProduct?.title}
+          description={selectedProduct?.description}
+          price={selectedProduct?.price}
+          discountPercentage={selectedProduct?.discountPercentage}
+          rating={selectedProduct?.rating}
+          stock={selectedProduct?.stock}
+          brand={selectedProduct?.brand}
+          category={selectedProduct?.category}
+          thumbnail={selectedProduct?.thumbnail}
+          images={selectedProduct?.images}
+          page="edit"
+        />
+      )}
     </ProductCardWrapper>
   );
 };
