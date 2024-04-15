@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCard from "./ProductList"
 import Topbanner from './Topbanner';
+import Footer from '../Footer/Footer';
 
 
 function Home(){
@@ -8,6 +9,7 @@ function Home(){
         <div>
         <Topbanner/>
         <ProductCard page="home"/>
+<Footer/>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import {  Container, Typography } from "@mui/material";
 
 export const ProductCardWrapper = styled(Container)`
-  margin-top: 40px;
+  margin-top: 100px;
 `;
 
 export const ProductDescription = styled(Typography)`
@@ -28,4 +28,5 @@ export const CenteredContainer = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top:80px;
 `;

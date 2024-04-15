@@ -39,7 +39,7 @@ export const fetchUserList = createAsyncThunk(
 // Async thunk action creator for logging in
 export const login = createAsyncThunk(
     'auth/login',
-    async (userData: { username: string; password: string }, { rejectWithValue }) => {
+    async (userData: { username: string; password: string;admin:boolean }, { rejectWithValue }) => {
       try {
         const response = await axios.post('http://localhost:3001/login', userData);
         return response.data;
@@ -60,6 +60,9 @@ const authSlice = createSlice({
   },
   reducers: {
     // Other reducers if needed
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -104,7 +107,7 @@ const authSlice = createSlice({
       });
   },
 });
-
+export const { setUser } = authSlice.actions;
 export const getUserList = (state: any) => state?.auth?.userList;
 export const getUserLogedIn = (state: any) => state?.auth?.user;
 export default authSlice.reducer;

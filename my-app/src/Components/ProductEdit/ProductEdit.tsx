@@ -122,7 +122,6 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
     }
   };
 
-  console.log(productId);
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const files = Array.from(e.target.files);
@@ -160,7 +159,6 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
           images,
         }) as any
       );
-      console.log(response)
       if (response?.meta.requestStatus === "fulfilled") {
         alert("Product added successfully");
         handleClose();
@@ -182,12 +180,14 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         fullWidth
+        style={{ marginBottom: '1rem',marginTop:"1rem" }} 
       />
       <TextField
         label="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         fullWidth
+        style={{ marginBottom: '1rem' }} 
       />
       <TextField
         label="Price"
@@ -195,6 +195,7 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         value={price}
         onChange={(e) => setPrice(Number(e.target.value))}
         fullWidth
+        style={{ marginBottom: '1rem' }} 
       />
       {/* Additional input fields for other product data */}
       <TextField
@@ -203,6 +204,7 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         value={discountPercentage}
         onChange={(e) => setDiscountPercentage(Number(e.target.value))}
         fullWidth
+        style={{ marginBottom: '1rem' }} 
       />
       <TextField
         label="Rating"
@@ -210,6 +212,7 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         value={rating}
         onChange={(e) => setRating(Number(e.target.value))}
         fullWidth
+        style={{ marginBottom: '1rem' }} 
       />
       <TextField
         label="Stock"
@@ -217,18 +220,21 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         value={stock}
         onChange={(e) => setStock(Number(e.target.value))}
         fullWidth
+        style={{ marginBottom: '1rem' }} 
       />
       <TextField
         label="Brand"
         value={brand}
         onChange={(e) => setBrand(e.target.value)}
         fullWidth
+        style={{ marginBottom: '1rem' }} 
       />
       <TextField
         label="Category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
         fullWidth
+        style={{ marginBottom: '1rem' }} 
       />
       {/* Example for handling array input */}
      {page ==="addproduct"?

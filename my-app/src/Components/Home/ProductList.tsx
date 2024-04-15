@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addProductToCart,
   deleteProduct,
-  editProduct,
   fetchProducts,
   getProductList,
 } from "../../redux/Slice";
@@ -21,11 +21,10 @@ import {
 } from "./style/style";
 import { getUserLogedIn } from "../../redux/authSlice";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import EditProductPopup from "../ProductEdit/ProductEdit";
 
 interface ProductCardProps {
-  page: "home" | "admin"; // Specify the possible values for the page prop
+  page: "home" | "admin"; 
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
@@ -63,10 +62,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
   };
 
   const handleOpenEditPopup = (product: any) => {
-    setSelectedProduct(product); // Set the selected product
+    setSelectedProduct(product);
     setPopUp(true);
   };
-
   const handleOpenAddPopup = () => {
     setAddProductPopupOpen(true);
   };
@@ -78,21 +76,67 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
     setPopUp(false);
   };
 
+  const handleAddProductToCart = async (
+    userId: string,
+    productId: string,
+    title: string,
+    description: string,
+    price: number,
+    discountPercentage: number,
+    rating: number,
+    stock: number,
+    brand: string,
+    category: string,
+    thumbnail: string,
+    images: any[]
+  ) => {
+    try {
+      if (user === null) {
+        alert("Login to continue");
+        navigate("/login");
+        return
+      } 
+      const response = await dispatch(
+        addProductToCart({
+          userId,
+          productId,
+          title,
+          description,
+          price,
+          discountPercentage,
+          rating,
+          stock,
+          brand,
+          category,
+          thumbnail,
+          images
+        }) as any
+      );
+      console.log(response);
+    } catch (error) {
+      console.error("Error adding product:", error);
+      alert("Failed to add product. Please try again later.");
+    }
+  };
   return (
     <ProductCardWrapper>
-         <Grid container justifyContent="flex-end">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleOpenAddPopup} // Fixed: Missing function invocation
-        >
-          Add product
-        </Button>
-      </Grid>
+      {page === "admin" ? (
+        <Grid container justifyContent="flex-end">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleOpenAddPopup}
+          >
+            Add product
+          </Button>
+        </Grid>
+      ) : (
+        ""
+      )}
 
       <EditProductPopup
-        open={addProductPopupOpen} 
-        handleClose={handleCloseAddPopup} 
+        open={addProductPopupOpen}
+        handleClose={handleCloseAddPopup}
         productId={null}
         title=""
         description=""
@@ -103,7 +147,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
         brand=""
         category=""
         thumbnail=""
-        images= {[]}
+        images={[]}
         page="addproduct"
       />
 
@@ -148,7 +192,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
                           variant="contained"
                           color="primary"
                           fullWidth
-                          onClick={handleClick}
+                          onClick={() => {handleAddProductToCart(user?.userId,
+                            product?.id,
+                            product?.title,
+                            product?.description,
+                            product?.price,
+                            product?.discountPercentage,
+                            product?.rating,
+                            product?.stock,
+                            product?.brand,
+                            product?.category,
+                            product?.thumbnail,
+                            product?.images);}}
                         >
                           Add to Cart
                         </Button>
@@ -180,7 +235,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
                         variant="contained"
                         color="primary"
                         fullWidth
-                        onClick={handleClick}
+                        onClick={() => {handleAddProductToCart(user?.userId,
+                          product?.id,
+                          product?.title,
+                          product?.description,
+                          product?.price,
+                          product?.discountPercentage,
+                          product?.rating,
+                          product?.stock,
+                          product?.brand,
+                          product?.category,
+                          product?.thumbnail,
+                          product?.images);}}
                       >
                         Add to Cart
                       </Button>
@@ -196,7 +262,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
       </Grid>
 
       {/* Render the EditProductPopup only when a product is selected */}
-      {selectedProduct && (
+      {selectedProduct && popUp && (
         <EditProductPopup
           open={popUp}
           handleClose={handleCloseEditPopup}

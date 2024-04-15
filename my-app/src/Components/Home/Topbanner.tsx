@@ -45,7 +45,7 @@ function Topbanner() {
   
 
     return (
-        <Container style={{ marginTop: 10, maxHeight: 300 }}>
+        <Container style={{ marginTop: 100, maxHeight: 300 }}>
         <Slider {...settings}>
           {bannerImages?.length>0 ? (
             bannerImages.map((item:string, index:number) => (
