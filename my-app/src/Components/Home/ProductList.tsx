@@ -40,14 +40,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
   const products = useSelector(getProductList);
   const user = useSelector(getUserLogedIn);
 
-  const handleClick = () => {
-    if (user === null) {
-      alert("Login to continue");
-      navigate("/login");
-    } else {
-    }
-  };
-
   const handleDeleteProduct = async (productId: any) => {
     try {
       const response = await dispatch(deleteProduct(productId) as any);
@@ -112,12 +104,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
           images
         }) as any
       );
-      console.log(response);
+      console.log(response)
     } catch (error) {
       console.error("Error adding product:", error);
       alert("Failed to add product. Please try again later.");
     }
   };
+
   return (
     <ProductCardWrapper>
       {page === "admin" ? (

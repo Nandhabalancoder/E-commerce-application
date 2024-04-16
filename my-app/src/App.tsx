@@ -1,16 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Components/Home/Home';
-import Login from './Components/Login/Login';
-import Navbar from './Components/Navbar';
-import React from 'react';
-import SignUpForm from './Components/SignUp/SignUp';
-import Admin from './Components/Admin/Admin';
-import Cart from './Components/Cart/Cart';
-import Footer from './Components/Footer/Footer';
-
-
-
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Components/Home/Home";
+import Login from "./Components/Login/Login";
+import Navbar from "./Components/Navbar";
+import React from "react";
+import SignUpForm from "./Components/SignUp/SignUp";
+import Admin from "./Components/Admin/Admin";
+import Cart from "./Components/Cart/Cart";
 
 function App() {
   return (
@@ -25,8 +20,6 @@ function App() {
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
-  
-
     </div>
   );
 }

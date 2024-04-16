@@ -31,7 +31,7 @@ function Cart(props: Props) {
         }
       };      
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{marginTop:100}}>
         <Table>
           <TableHead>
             <TableRow>

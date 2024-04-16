@@ -873,6 +873,24 @@
         "https://cdn.dummyjson.com/product-images/29/4.webp",
         "https://cdn.dummyjson.com/product-images/29/thumbnail.webp"
       ]
+    },
+    {
+      "id": "fd35",
+      "title": "image product",
+      "description": "asd",
+      "price": 1,
+      "discountPercentage": 1,
+      "rating": 1,
+      "stock": 1,
+      "brand": "asd",
+      "category": "newproduct",
+      "thumbnail": "",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/17/1.jpg",
+        "https://cdn.dummyjson.com/product-images/17/2.jpg",
+        "https://cdn.dummyjson.com/product-images/17/3.jpg",
+        "https://cdn.dummyjson.com/product-images/17/thumbnail.jpg"
+      ]
     }
   ],
   "cart": [
@@ -935,6 +953,27 @@
         "https://cdn.dummyjson.com/product-images/9/3.png",
         "https://cdn.dummyjson.com/product-images/9/4.jpg",
         "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "ec13",
+      "userId": "a55e",
+      "productId": "8",
+      "title": "Microsoft Surface Laptop 4",
+      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+      "price": 1499,
+      "discountPercentage": 10.23,
+      "rating": 4.43,
+      "stock": 68,
+      "brand": "Microsoft Surface",
+      "category": "laptops",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/8/1.jpg",
+        "https://cdn.dummyjson.com/product-images/8/2.jpg",
+        "https://cdn.dummyjson.com/product-images/8/3.jpg",
+        "https://cdn.dummyjson.com/product-images/8/4.jpg",
+        "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg"
       ]
     }
   ],

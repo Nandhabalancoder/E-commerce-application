@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
     return cartList.filter((item: any) => item.userId === user.userId);
   }, [cartList, user]);
 
-console.log(user)
+
 // Function to store user data in local storage
 const storeUserDataInLocalStorage = (userData:any) => {
   localStorage.setItem('userData', JSON.stringify(userData));

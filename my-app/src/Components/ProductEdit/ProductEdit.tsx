@@ -122,18 +122,6 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
     }
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const files = Array.from(e.target.files);
-      // Assuming that images are stored in the local file system and need to be uploaded
-      // You can handle the file upload process here
-      // For now, just updating the state with the selected file names
-      const fileNames = files.map(file => file.name);
-      setImages(fileNames);
-    }
-  };
-
-
   const handleAddProduct = async ( title: string,
     description: string,
     price: number,
@@ -171,6 +159,11 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
       alert("Failed to add product. Please try again later.");
     }
   };
+  
+  const handleInputChange = (event:any) => {
+    const paths = event.target.value.split(",").map((path:any) => path.trim().replace(/"/g, ''));
+    setImages(paths);
+  };
   return (
     <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
     <DialogTitle>     {page ==="addproduct"?"Add Product":"Edit Product"}</DialogTitle>
@@ -188,6 +181,7 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         onChange={(e) => setDescription(e.target.value)}
         fullWidth
         style={{ marginBottom: '1rem' }} 
+        
       />
       <TextField
         label="Price"
@@ -196,6 +190,7 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         onChange={(e) => setPrice(Number(e.target.value))}
         fullWidth
         style={{ marginBottom: '1rem' }} 
+        inputProps={{ min: "0", step: "1" }}
       />
       {/* Additional input fields for other product data */}
       <TextField
@@ -205,6 +200,7 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         onChange={(e) => setDiscountPercentage(Number(e.target.value))}
         fullWidth
         style={{ marginBottom: '1rem' }} 
+        inputProps={{ min: "0", step: "1" }}
       />
       <TextField
         label="Rating"
@@ -213,6 +209,7 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         onChange={(e) => setRating(Number(e.target.value))}
         fullWidth
         style={{ marginBottom: '1rem' }} 
+        inputProps={{ min: "0", step: "1" }}
       />
       <TextField
         label="Stock"
@@ -221,6 +218,7 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
         onChange={(e) => setStock(Number(e.target.value))}
         fullWidth
         style={{ marginBottom: '1rem' }} 
+        inputProps={{ min: "0", step: "1" }}
       />
       <TextField
         label="Brand"
@@ -238,12 +236,20 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
       />
       {/* Example for handling array input */}
      {page ==="addproduct"?
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          multiple
-        />:""
+        // <input
+        //   type="file"
+        //   accept="image/*"
+        //   onChange={handleImageChange}
+        //   multiple
+        // />:""
+        <TextField
+        type="text"
+        placeholder="Enter comma-separated file paths"
+        onChange={handleInputChange}
+        fullWidth
+        style={{ marginBottom: '1rem' }} 
+        value={images}
+      />:""
      } 
     </DialogContent>
     <DialogActions>
