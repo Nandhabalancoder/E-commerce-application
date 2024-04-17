@@ -99,19 +99,20 @@ const handleSignUpSubmit = async (
     // Optionally, navigate to the logout page or perform any other necessary actions
   };
   return (
-    <CenteredContainer>
+    <CenteredContainer >
       {
         page==="login"?(   <>
         {user!==null?
-        <Button variant="contained" onClick={handleLogout} >Log Out</Button>
+        <Button variant="contained" onClick={handleLogout}  >Log Out</Button>
         :<>  <Typography variant="h5" component="h5">LOG IN</Typography>
         <Formik
           initialValues={{ username: "", password: "",admin:false ,userId:""}}
           validationSchema={validationSchema}
           onSubmit={handleLoginSubmit}
+    
         >
           {({ isSubmitting }) => (
-            <Form>
+            <Form data-testid="signup-form">
               <div>
                 <Typography>Username:</Typography>
                 <Field
@@ -120,6 +121,7 @@ const handleSignUpSubmit = async (
                   name="username"
                   variant="outlined"
                   fullWidth
+                  data-testid="username-input"
                 />
                 <ErrorMessage
                   name="username"
@@ -138,6 +140,7 @@ const handleSignUpSubmit = async (
                   name="password"
                   variant="outlined"
                   fullWidth
+                  data-testid="password-input"
                 />
                 <ErrorMessage
                   name="password"
@@ -155,6 +158,7 @@ const handleSignUpSubmit = async (
                 color="primary"
                 fullWidth
                 style={{marginTop:10}}
+                data-testid="logInButton"
               >
 Log In
               </Button>
@@ -186,6 +190,7 @@ Log In
                 name="username"
                 variant="outlined"
                 fullWidth
+                data-testid="username-input-singUp"
               />
               <ErrorMessage
                 name="username"
@@ -204,6 +209,7 @@ Log In
                 name="password"
                 variant="outlined"
                 fullWidth
+                data-testid="password-input-singUp"
               />
               <ErrorMessage
                 name="password"
@@ -221,6 +227,7 @@ Log In
               color="primary"
               fullWidth
               style={{marginTop:10}}
+              data-testid="signUpButton"
             >
   Sign Up
             </Button>

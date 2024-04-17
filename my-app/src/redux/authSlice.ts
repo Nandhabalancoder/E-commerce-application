@@ -107,7 +107,7 @@ const authSlice = createSlice({
       });
   },
 });
-export const { setUser } = authSlice.actions;
+export const { setUser } = authSlice?.actions;
 export const getUserList = (state: any) => state?.auth?.userList;
 export const getUserLogedIn = (state: any) => state?.auth?.user;
 export default authSlice.reducer;

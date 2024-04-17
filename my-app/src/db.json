@@ -59,6 +59,18 @@
       "username": "newuser",
       "password": "qwe",
       "admin": false
+    },
+    {
+      "id": "7819",
+      "username": "testuser",
+      "password": "password123",
+      "admin": false
+    },
+    {
+      "id": "2421",
+      "username": "testuser",
+      "password": "password123",
+      "admin": false
     }
   ],
   "login": [
