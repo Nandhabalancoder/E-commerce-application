@@ -49,15 +49,30 @@ export const login = createAsyncThunk(
     }
   );
   
-
-const authSlice = createSlice({
-  name: 'auth',
-  initialState: {
+  interface User {
+    id: string;
+    username: string;
+    password: string;
+    admin: boolean;
+    userId: string;
+  }
+  interface AuthState {
+    user: User | null; // Assuming User is the interface representing your user object
+    loading: boolean;
+    error: string | null;
+    userList: User[]; // Assuming userList is an array of User objects
+  }
+  
+  const initialState: AuthState = {
     user: null,
     loading: false,
     error: null,
-    userList:[]
-  },
+    userList: [],
+  };
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState,
   reducers: {
     // Other reducers if needed
     setUser: (state, action) => {

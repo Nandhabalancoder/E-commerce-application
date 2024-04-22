@@ -119,9 +119,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
             variant="contained"
             color="primary"
             onClick={handleOpenAddPopup}
-          >
-            Add product
-          </Button>
+            data-testid="add-product-button"
+          >Add product</Button>
         </Grid>
       ) : (
         ""
@@ -162,7 +161,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
                   alt={product?.name}
                 />
                 <CardContent>
-                  <ProductTitle>{product.title || ""}</ProductTitle>
+                  <ProductTitle data-testid="product-title">{product.title || ""}</ProductTitle>
                   <ProductDescription variant="body1">
                     {product?.description || ""}
                   </ProductDescription>
@@ -197,6 +196,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
                             product?.category,
                             product?.thumbnail,
                             product?.images);}}
+                            data-testid="add-to-cart-button"
                         >
                           Add to Cart
                         </Button>
@@ -204,9 +204,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
                       <Grid item xs={12} pt={1}>
                         <Button
                           variant="contained"
-                          color="error"
+                          color="secondary"
                           fullWidth
                           onClick={() => handleDeleteProduct(product.id)}
+                          data-testid="delete-product-button"
                         >
                           delete
                         </Button>
@@ -217,7 +218,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ page }) => {
                           color="warning"
                           fullWidth
                           onClick={() => handleOpenEditPopup(product)} // Pass the clicked product to handleOpenEditPopup
-                        >
+                          data-testid="edit-product-button"
+                       >
                           Edit
                         </Button>
                       </Grid>

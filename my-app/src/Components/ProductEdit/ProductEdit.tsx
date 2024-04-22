@@ -109,12 +109,12 @@ const EditProductPopup: React.FC<EditProductPopupProps> = ({
           images,
         }) as any
       );
-      // if (response?.meta?.requestStatus === "fulfilled") {
-      //   alert("Product edited successfully");
-      //   handleClose();
-      // } else {
-      //   alert("Try again");
-      // }
+      if (response?.meta?.requestStatus === "fulfilled") {
+        alert("Product edited successfully");
+        handleClose();
+      } else {
+        alert("Try again");
+      }
       console.log(response);
     } catch (error) {
       console.error("Error editing product:", error);

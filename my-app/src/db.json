@@ -71,6 +71,30 @@
       "username": "testuser",
       "password": "password123",
       "admin": false
+    },
+    {
+      "id": "c3ba",
+      "username": "testuser",
+      "password": "password123",
+      "admin": false
+    },
+    {
+      "id": "5d6f",
+      "username": "testuser",
+      "password": "password123",
+      "admin": false
+    },
+    {
+      "id": "11ae",
+      "username": "testuser",
+      "password": "password123",
+      "admin": false
+    },
+    {
+      "id": "95aa",
+      "username": "testuser",
+      "password": "password123",
+      "admin": false
     }
   ],
   "login": [
@@ -436,6 +460,76 @@
       "password": "qwe",
       "admin": true,
       "userId": "a55e"
+    },
+    {
+      "id": "4522",
+      "username": "nandhabalan",
+      "password": "qwe",
+      "admin": true,
+      "userId": "a55e"
+    },
+    {
+      "id": "6ccf",
+      "username": "sangee",
+      "password": "qwe",
+      "admin": false,
+      "userId": "bd47"
+    },
+    {
+      "id": "2fe9",
+      "username": "nandhabalan",
+      "password": "qwe",
+      "admin": true,
+      "userId": "a55e"
+    },
+    {
+      "id": "af1e",
+      "username": "nandhabalan",
+      "password": "qwe",
+      "admin": true,
+      "userId": "a55e"
+    },
+    {
+      "id": "5aee",
+      "username": "nandhabalan",
+      "password": "qwe",
+      "admin": true,
+      "userId": "a55e"
+    },
+    {
+      "id": "016a",
+      "username": "nandhabalan",
+      "password": "qwe",
+      "admin": true,
+      "userId": "a55e"
+    },
+    {
+      "id": "c802",
+      "username": "sangee",
+      "password": "qwe",
+      "admin": false,
+      "userId": "bd47"
+    },
+    {
+      "id": "686a",
+      "username": "nandhabalan",
+      "password": "qwe",
+      "admin": true,
+      "userId": "a55e"
+    },
+    {
+      "id": "e1d2",
+      "username": "nandhabalan",
+      "password": "qwe",
+      "admin": true,
+      "userId": "a55e"
+    },
+    {
+      "id": "3d7a",
+      "username": "nandhabalan",
+      "password": "qwe",
+      "admin": true,
+      "userId": "a55e"
     }
   ],
   "products": [
@@ -474,25 +568,6 @@
         "https://cdn.dummyjson.com/product-images/7/2.jpg",
         "https://cdn.dummyjson.com/product-images/7/3.jpg",
         "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "8",
-      "title": "Microsoft Surface Laptop 4",
-      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-      "price": 1499,
-      "discountPercentage": 10.23,
-      "rating": 4.43,
-      "stock": 68,
-      "brand": "Microsoft Surface",
-      "category": "laptops",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/8/1.jpg",
-        "https://cdn.dummyjson.com/product-images/8/2.jpg",
-        "https://cdn.dummyjson.com/product-images/8/3.jpg",
-        "https://cdn.dummyjson.com/product-images/8/4.jpg",
-        "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg"
       ]
     },
     {
@@ -570,8 +645,7 @@
       ]
     },
     {
-      "id": "13",
-      "title": "Fog Scent Xpressio Perfume",
+      "title": "Fog Scent Xpressio",
       "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
       "price": 13,
       "discountPercentage": 8.14,
@@ -586,7 +660,8 @@
         "https://cdn.dummyjson.com/product-images/13/3.jpg",
         "https://cdn.dummyjson.com/product-images/13/4.jpg",
         "https://cdn.dummyjson.com/product-images/13/thumbnail.webp"
-      ]
+      ],
+      "id": "13"
     },
     {
       "id": "14",
@@ -903,49 +978,24 @@
         "https://cdn.dummyjson.com/product-images/17/3.jpg",
         "https://cdn.dummyjson.com/product-images/17/thumbnail.jpg"
       ]
+    },
+    {
+      "id": "8e0d",
+      "title": "test product",
+      "description": "qwe",
+      "price": 1,
+      "discountPercentage": 2,
+      "rating": 0,
+      "stock": 2,
+      "brand": "qwe",
+      "category": "qwe",
+      "thumbnail": "",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/17/1.jpg"
+      ]
     }
   ],
   "cart": [
-    {
-      "id": "b575",
-      "userId": "bd47",
-      "productId": "7",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": 1499,
-      "discountPercentage": 4.15,
-      "rating": 4.25,
-      "stock": 50,
-      "brand": "Samsung",
-      "category": "laptops",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
-    {
-      "id": "7a85",
-      "userId": "bd47",
-      "productId": "7",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": 1499,
-      "discountPercentage": 4.15,
-      "rating": 4.25,
-      "stock": 50,
-      "brand": "Samsung",
-      "category": "laptops",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/7/1.jpg",
-        "https://cdn.dummyjson.com/product-images/7/2.jpg",
-        "https://cdn.dummyjson.com/product-images/7/3.jpg",
-        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
-      ]
-    },
     {
       "id": "8792",
       "userId": "e448",
@@ -968,24 +1018,65 @@
       ]
     },
     {
-      "id": "ec13",
-      "userId": "a55e",
-      "productId": "8",
-      "title": "Microsoft Surface Laptop 4",
-      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-      "price": 1499,
-      "discountPercentage": 10.23,
-      "rating": 4.43,
-      "stock": 68,
-      "brand": "Microsoft Surface",
-      "category": "laptops",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg",
+      "id": "e008",
+      "userId": "bd47",
+      "productId": "18",
+      "title": "Oil Free Moisturizer 100ml",
+      "description": "Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.",
+      "price": 40,
+      "discountPercentage": 13.1,
+      "rating": 4.56,
+      "stock": 88,
+      "brand": "Dermive",
+      "category": "skincare",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/8/1.jpg",
-        "https://cdn.dummyjson.com/product-images/8/2.jpg",
-        "https://cdn.dummyjson.com/product-images/8/3.jpg",
-        "https://cdn.dummyjson.com/product-images/8/4.jpg",
-        "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg"
+        "https://cdn.dummyjson.com/product-images/18/1.jpg",
+        "https://cdn.dummyjson.com/product-images/18/2.jpg",
+        "https://cdn.dummyjson.com/product-images/18/3.jpg",
+        "https://cdn.dummyjson.com/product-images/18/4.jpg",
+        "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "2477",
+      "userId": "bd47",
+      "productId": "17",
+      "title": "Tree Oil 30ml",
+      "description": "Tea tree oil contains a number of compounds, including terpinen-4-ol, that have been shown to kill certain bacteria,",
+      "price": 12,
+      "discountPercentage": 4.09,
+      "rating": 4.52,
+      "stock": 78,
+      "brand": "Hemani Tea",
+      "category": "skincare",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/17/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/17/1.jpg",
+        "https://cdn.dummyjson.com/product-images/17/2.jpg",
+        "https://cdn.dummyjson.com/product-images/17/3.jpg",
+        "https://cdn.dummyjson.com/product-images/17/thumbnail.jpg"
+      ]
+    },
+    {
+      "id": "bbab",
+      "userId": "bd47",
+      "productId": "16",
+      "title": "Hyaluronic Acid Serum",
+      "description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
+      "price": 19,
+      "discountPercentage": 13.31,
+      "rating": 4.83,
+      "stock": 110,
+      "brand": "L'Oreal Paris",
+      "category": "skincare",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/16/1.png",
+        "https://cdn.dummyjson.com/product-images/16/2.webp",
+        "https://cdn.dummyjson.com/product-images/16/3.jpg",
+        "https://cdn.dummyjson.com/product-images/16/4.jpg",
+        "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg"
       ]
     }
   ],

@@ -12,11 +12,11 @@ import { Badge, Button } from "@mui/material";
 import { fetchCart, getCart } from "../redux/Slice";
 
 const Navbar: React.FC = () => {
-  const pages = [{ name: "Home", link: "/" },
-  { name: "About", link: "/" }
+  const pages = [{ name: "Home", link: "/" }
   ];
   const user = useSelector(getUserLogedIn);
   const dispatch = useDispatch();
+  console.log(user)
 
   useEffect(() => {
     dispatch(fetchCart() as any);

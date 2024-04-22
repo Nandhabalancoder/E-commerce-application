@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
-import { TextField, Button, Typography} from "@mui/material";
+import { TextField, Button, Typography, Stack, Alert} from "@mui/material";
 import { CenteredContainer } from "../Home/style/style";
 import { fetchUserList, getUserList,getUserLogedIn,login,setUser,signup } from "../../redux/authSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,16 @@ interface SignUpFormProps {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(getUserLogedIn);
+    const [showAlert, setShowAlert] = useState(false);
+    const [error, setError] = useState("");
+
+    // Function to show the alert for 5 seconds
+    const showAlertForFiveSeconds = () => {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000); // Hide alert after 5 seconds (5000 milliseconds)
+    };
 
     useEffect(() => {
         dispatch(fetchUserList() as any);
@@ -47,7 +57,8 @@ interface SignUpFormProps {
             resetForm();
             alert("Login Successfully");
           } else {
-            alert("Please check the credentials");
+            setError("Please check the credentials")
+          showAlertForFiveSeconds();
           }
         } catch (error: any) {
           console.error("Error:", error.message);
@@ -70,9 +81,13 @@ const handleSignUpSubmit = async (
             user.username === values.username && user.password === values.password
         );
         if (isUserExists) {
-          alert("Already have an account");
+          setError("Already have an account")
+          showAlertForFiveSeconds();
+          // alert("Already have an account");
         } else if (isUserNameExists) {
-          alert("This username is already used");
+          // alert("This username is already used");
+          setError("This username is already used")
+          showAlertForFiveSeconds();
         } else {
           await dispatch(signup(values) as any);
           resetForm();
@@ -91,7 +106,7 @@ const handleSignUpSubmit = async (
   };
   const handleLogout = () => {
     // Dispatch the logout action
-    dispatch(setUser(null));
+    dispatch(setUser(null as null));
 
     // Clear user data from local storage
     clearUserDataFromLocalStorage();
@@ -103,7 +118,7 @@ const handleSignUpSubmit = async (
       {
         page==="login"?(   <>
         {user!==null?
-        <Button variant="contained" onClick={handleLogout}  >Log Out</Button>
+        <Button variant="contained" onClick={handleLogout} data-testid="logout-button" >Log Out</Button>
         :<>  <Typography variant="h5" component="h5">LOG IN</Typography>
         <Formik
           initialValues={{ username: "", password: "",admin:false ,userId:""}}
@@ -240,6 +255,13 @@ Log In
         )}
       </Formik></>   )
       }
+        <Stack spacing={2} sx={{ position: 'fixed', top: '10px', right: '10px', zIndex: 9999 }}>
+        {showAlert && (
+          <Alert severity="error" onClose={() => setShowAlert(false)}>
+            {error}
+          </Alert>
+        )}
+      </Stack>
     </CenteredContainer>
   );
 };
